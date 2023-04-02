@@ -36,9 +36,9 @@ class Game {
       while (!s.winning()) {  
         out << "State: " << s << endl;  
         out << *getPlayer(s.getPlaying()) << " ";  
-        out << players1[s.getPlaying()]->play(s) << endl;  
-        s.next(players1[s.getPlaying()]->play(s));  
-      }  
+        out << (**(players1 + s.getPlaying())).play(s) << endl;  
+        s.next((**(players1 + s.getPlaying())).play(s));  
+      }
       out << "State: " << s << endl;  
       int w;  
       if (s.getPlaying() == 0) {  
