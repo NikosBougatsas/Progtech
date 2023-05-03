@@ -10,13 +10,12 @@ class Polynomial {
         int exponent;
         int coefficient;
         Term *next;
-
+      
         Term(int exp, int coeff, Term *n) {
           exponent = exp;
           coefficient = coeff;
           next = n;
         }
-
         friend class Polynomial;
         friend Polynomial operator + (const Polynomial &p, const Polynomial &q);
         friend Polynomial operator * (const Polynomial &p, const Polynomial &q);
@@ -41,10 +40,8 @@ class Polynomial {
 
     Polynomial & operator = (const Polynomial &p) {
       this->~Polynomial();
-
       head = NULL;
       Term *q = p.head;
-
       while (q != NULL) {
         addTerm(q->exponent, q->coefficient);
         q = q->next;
@@ -65,7 +62,6 @@ class Polynomial {
         head->next = NULL;
         return;
       }
-
       if (head->exponent == expon) {
         head->coefficient += coeff;
         if (head->coefficient == 0) {
@@ -76,7 +72,6 @@ class Polynomial {
         delete q;
         return;
       }
-
       p = head;
       r = p->next;
       while (r != NULL && r->exponent > expon) {
@@ -135,14 +130,12 @@ class Polynomial {
           z = z->next;
         }
       }
-
       if (z == NULL) {
         t = r;
       }
       else if (r == NULL) {
         t = z;
       }
-
       while (t != NULL) {
         res.addTerm(t->exponent, t->coefficient);
         t = t->next;
@@ -152,7 +145,6 @@ class Polynomial {
 
     friend Polynomial operator * (const Polynomial &p, const Polynomial &q) {
       Polynomial res;
-
       for (Term *pTerm = p.head; pTerm != NULL; pTerm = pTerm->next) {
         for (Term *qTerm = q.head; qTerm != NULL; qTerm = qTerm->next) {
             int expon = pTerm->exponent + qTerm->exponent;
@@ -165,7 +157,6 @@ class Polynomial {
 
     friend ostream & operator << (ostream &out, const Polynomial &p) {
       Term *q = p.head;
-
       if (q == NULL) {
         out << "0";
         return out;
@@ -185,9 +176,7 @@ class Polynomial {
       else if (q->exponent > 1) {
         out << "x^" << q->exponent;
       }
-
       q = q->next;
-
       while (q != NULL) {
         if (q->coefficient < 0) {
           out << " - ";
