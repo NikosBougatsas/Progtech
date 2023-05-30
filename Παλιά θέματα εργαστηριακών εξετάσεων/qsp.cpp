@@ -21,13 +21,11 @@ int main() {
   queue<int> q;
   stack<int> s;
   string str;
-
   for (int i = 0; i < N; ++i) {
     cin >> n;
     q.push(n);
   }
   cin >> str;
-
   for (int i = 0; i < str.length(); ++i) {
     if (str[i] == 'P') {
       showq(q);
