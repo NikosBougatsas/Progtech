@@ -5,7 +5,7 @@ struct node {
   node *left, *right;
 };
 
-int freq (node *t, T &x, int h) {
+int freq (node *t, const T &x, int h) {
   if (t == NULL) return 0;
   if (h == 1){
     if (t->data == x) return 1;
